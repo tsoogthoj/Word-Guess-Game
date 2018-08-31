@@ -1,0 +1,96 @@
+@font-face {
+    font-family: dinoFont;
+    src: url('../font/Jurassic Park.ttf');
+
+}
+
+body, html {
+    font-size: 200%;
+    font-family: dinoFont;
+    height: 100%;
+    background: url("../images/cracked.jpg");
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: auto;      
+}
+
+h1 {
+    font-size: 110%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 80%;
+    text-align: center;
+}
+
+#alphabet {
+    text-align: center;
+    margin-top: 1%;
+}
+
+#alphabet ul{
+    list-style: none;
+}
+
+#alphabet li {
+    display: inline;
+    margin: 5px;
+    background-color: rgb(250, 221, 167);
+    padding: 5px 5px 5px 5px;
+}
+
+button {
+    font-family: dinoFont;
+    font-size: 70%;
+    background-color: rgb(238, 207, 150);
+}
+
+button:active {
+    opacity: 1;
+}
+
+#hiddenWord {
+    text-align: center;
+}
+#hiddenWord ul{
+    list-style: none;
+}
+
+#hiddenWord li{
+    display: inline;
+    margin: 5px;
+}
+#choice {
+    text-align: center;
+    margin-top: 2%;
+}
+#currentLetterContainer {
+    text-align: center;
+    font-size: 100%;
+    border: 2px;
+    border-style: solid;
+    margin-right: 45%;
+    margin-left: 45%;
+    background-color: blanchedalmond;
+}
+
+#currentLetter {
+    font-size: 150%;
+}
+
+#dinoChase {
+    background-color: white;
+}
+
+#dinoRun {
+    float: left;
+}
+
+#manRun {
+    position: relative;
+    margin-top: 20px;
+    float: right;
+}
+
