@@ -1,12 +1,16 @@
 @font-face {
-    font-family: dinoFont;
+    font-family: jurassicFont;
     src: url('../font/Jurassic Park.ttf');
+}
 
+@font-face {
+    font-family: dinoFont;
+    src: url('../font/Prehistoric\ Caveman.ttf');
 }
 
 body, html {
     font-size: 200%;
-    font-family: dinoFont;
+    font-family: jurassicFont;
     height: 100%;
     background: url("../images/cracked.jpg");
     background-size: cover;                    
@@ -16,6 +20,7 @@ body, html {
 }
 
 h1 {
+    margin-top: 1%;
     font-size: 110%;
     text-align: center;
 }
@@ -35,6 +40,7 @@ h2 {
 }
 
 #alphabet li {
+    
     display: inline;
     margin: 5px;
     background-color: rgb(250, 221, 167);
@@ -42,7 +48,7 @@ h2 {
 }
 
 button {
-    font-family: dinoFont;
+    font-family: jurassicFont;
     font-size: 70%;
     background-color: rgb(238, 207, 150);
 }
@@ -62,18 +68,14 @@ button:active {
     display: inline;
     margin: 5px;
 }
-#choice {
-    text-align: center;
-    margin-top: 2%;
-}
-#currentLetterContainer {
-    text-align: center;
-    font-size: 100%;
-    border: 2px;
-    border-style: solid;
-    margin-right: 45%;
-    margin-left: 45%;
-    background-color: blanchedalmond;
+#data {
+    font-family: jurassicFont;
+    margin-top: 3%;
+    font-size: 80%;
+    margin-bottom: 1%;
+    background-color: rgb(255, 235, 205, .7);
+    margin-right: 30%;
+    margin-left: 30%;
 }
 
 #currentLetter {
@@ -94,3 +96,20 @@ button:active {
     float: right;
 }
 
+#dinoChase {
+    height: 200px;
+    background-color: rgb(255, 235, 205, .7);
+}
+#dinoRun {
+    height: 200px;
+    margin-left: 3%;
+}
+
+#manRun {
+    height: 80px;
+    margin-top: 95px;
+    margin-right: 3%;
+    position: relative;
+    right: 0;
+    bottom: 0;
+}
