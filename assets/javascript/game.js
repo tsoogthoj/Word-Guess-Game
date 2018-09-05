@@ -67,10 +67,10 @@ var changedLetter;
 // Data
     // Population
     lives = 3;
-    document.getElementById("lives").innerHTML = "Population: " + lives;
+    document.getElementById("lives").innerHTML = lives;
     // Guesses
     guesses = 10;
-    document.getElementById('guesses').innerHTML = "Guesses: " + guesses;
+    document.getElementById('guesses').innerHTML = guesses;
 // Game Function
     // Press key to guess
     document.onkeyup = function(event) {
@@ -82,10 +82,20 @@ var changedLetter;
             // if correct then replace '_' with correct guess
             if (currentWord[i] === keyGuess) {
                 document.getElementById('letter-' + i).innerHTML = keyGuess;
-            } else {
-                guesses = guesses - 1;
             }
         }
+        // if guessed wrong then -1 from number of guesses
+        var j = (currentWord.indexOf(keyGuess));
+        if (j === -1) {
+            guesses -= 1;
+            console.log(guesses);
+            document.getElementById('guesses').innerHTML = guesses;
+            // Move dino left base on guesses
+            var dinoId = document.getElementById('dinoRun');
+            dinoId.style.position = 'relative';
+            dinoId.style.left = 80 * (10 - guesses) + 'px';
+        }
+        console.log(guesses);
         // Fade button that was pressed using the key
         for (var i = 0; i < abc.length; i++) {
             if (abc[i] === keyGuess) {
@@ -93,6 +103,11 @@ var changedLetter;
                 }   
             }
     }
+    
+    // minus 1 lives when guesses reaches 0
+
+    // when lives reaches 0 then game over
+
 
     // Press and fade button when clicked on
     for (var i = 0; i < abc.length; i++) {
@@ -101,12 +116,13 @@ var changedLetter;
              // Fade button when pressed
             this.setAttribute("class", "active");
             console.log(this.innerHTML);
+            // if correct then replace '_' with correct guess
             for (var i = 0; i < currentWord.length; i++) {
                 if (currentWord[i] === this.innerHTML) {
-                document.getElementById('letter-' + i).innerHTML = this.innerHTML;
+                    document.getElementById('letter-' + i).innerHTML = this.innerHTML;
                 }
             }
-            }
+        }
     }
 
   

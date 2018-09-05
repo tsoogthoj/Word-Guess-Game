@@ -35,9 +35,9 @@ h2 {
 }
 
 #alphabet li {
-  display: inline;
-  margin: 5px;
+  display: inline-block;
   background-color: rgb(250, 221, 167);
+  margin: 5px;
   padding: 5px 5px;
   cursor: pointer;
   border: solid 1px black;
@@ -60,6 +60,7 @@ h2 {
   margin: 5px;
 }
 #data {
+  clear: both;
   font-family: jurassicFont;
   margin-top: 3%;
   font-size: 80%;
@@ -70,13 +71,17 @@ h2 {
   text-align: center;
 }
 
+#lives, #guesses {
+  display: inline;
+  font-size: 120%;
+}
 #dinoChase {
   background-color: white;
 }
 
-#dinoRun {
+/* #dinoRun {
   float: left;
-}
+} */
 
 #manRun {
   position: relative;
