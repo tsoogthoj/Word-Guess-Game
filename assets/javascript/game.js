@@ -1,6 +1,5 @@
 var wordBank =
-    ['tyrannosaurs', 'velociraptor', 'triceratops',
-    'brachiosaurus', 'stegosaurus', 'allosaurus', 'pachycephalosaurus', 'carnotaurus', 'mosasaurus', 'ankylosaurus', 'edmontosaurus', 'suchomimus', 'apatosaurus', 'pteranodon', 'parasaurolophus', 'microceratus', 'gallimmus'];
+    ['tyrannosaurs', 'velociraptor', 'triceratops', 'brachiosaurus', 'stegosaurus', 'allosaurus', 'pachycephalosaurus', 'carnotaurus', 'mosasaurus', 'ankylosaurus', 'edmontosaurus', 'suchomimus', 'apatosaurus', 'pteranodon', 'parasaurolophus', 'microceratus', 'gallimmus'];
 
 var abc = 
     ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -25,13 +24,9 @@ var changedLetter;
     }
     console.log(splitCurrentWord); 
     }
-    
     generateRandomWord();
-
-
 // Create list of the current word with '_'
     // create ul
-
     var ul = document.createElement('ul');
     // attach ul to id='hiddenWord'
     document.getElementById('hiddenWord').appendChild(ul);
@@ -51,10 +46,6 @@ var changedLetter;
         } 
     }
     createList();
-    
-
-
-
 // Create button with alphabet
     // create ul
     var ul = document.createElement('ul');
@@ -85,13 +76,7 @@ var changedLetter;
     // Guesses
     guesses = 10;
     document.getElementById('guesses').innerHTML = guesses;
-
-
-
-
-
-
-// Game Function
+// Game Functions
     // Move dino base on guesses left
     function moveDino() {
         var dinoId = document.getElementById('dinoRun');
@@ -104,11 +89,54 @@ var changedLetter;
         for (var i = 0; i < 26; i++)
         document.getElementById('alphabet-' + i).classList.remove('active');
     }
+    // lives operation
+    function livesOperation() {
+        if (lives <= 0) {
+            alert('Game Over. Press OK or Cancel to restart.');
+            lives = 3;
+            document.getElementById("lives").innerHTML = lives;
+            // reset number of guesses
+            guesses = 10;
+            document.getElementById('guesses').innerHTML = guesses;
+        }
+    }
+    // Guesses operation
+    function guessesOperation() {
+        if (guesses <= 0) {
+            // minus 1 in population
+            lives -= 1;
+            document.getElementById("lives").innerHTML = lives;
+            // reset number of guesses
+            guesses = 10;
+            document.getElementById('guesses').innerHTML = guesses;
+            // Reset hidden word
+            document.getElementById('hiddenWordUl').innerHTML = "";
+            // Reset buttons
+            resetButton();
+            // Recreate
+            generateRandomWord();
+            createList();
+            moveDino();
+        }    
+    }
+    // if guessed wrong then -1 from number of guesses and move dino
+    function guessedWrong(event) {
+        var j = (currentWord.indexOf(event));
+        if (j === -1) {
+            guesses -= 1;
+            console.log(guesses);
+            document.getElementById('guesses').innerHTML = guesses;
+            // Move dino left base on guesses
+            var dinoId = document.getElementById('dinoRun');
+            dinoId.style.position = 'relative';
+            dinoId.style.left = 8 * (10 - guesses) + '%';
+        }
+        console.log(guesses);
+    }
     
-    
-    
-    
-    
+
+
+
     // Press key to guess
     document.onkeyup = function(event) {
         // add pressed key to variable
@@ -121,51 +149,18 @@ var changedLetter;
                 document.getElementById('letter-' + i).innerHTML = keyGuess;
             }
         }
-        // if guessed wrong then -1 from number of guesses
-        var j = (currentWord.indexOf(keyGuess));
-        if (j === -1) {
-            guesses -= 1;
-            console.log(guesses);
-            document.getElementById('guesses').innerHTML = guesses;
-            // Move dino left base on guesses
-            var dinoId = document.getElementById('dinoRun');
-            dinoId.style.position = 'relative';
-            dinoId.style.left = 8 * (10 - guesses) + '%';
-        }
-        console.log(guesses);
         // Fade button that was pressed using the key
         for (var i = 0; i < abc.length; i++) {
             if (abc[i] === keyGuess) {
                 abcId = document.getElementById('alphabet-' + i).setAttribute("class", "active");
                 }   
         }
-        if (guesses <= 0) {
-            // minus 1 lives
-            lives -= 1;
-            document.getElementById("lives").innerHTML = lives;
-             // reset number of guesses
-             guesses = 10;
-             document.getElementById('guesses').innerHTML = guesses;
-             // Reset hidden word
-             document.getElementById('hiddenWordUl').innerHTML = "";
-              // Reset buttons
-              resetButton();
-              // Recreate
-              generateRandomWord();
-              createList();
-              moveDino();
-
-
-        }
+        // if guessed wrong then -1 from number of guesses and move dino
+        guessedWrong(keyGuess);
+        // Guess operation
+        guessesOperation();
         // lives operation
-        if (lives <= 0) {
-            alert('Game Over. Press OK or Cancel to restart.');
-            lives = 3;
-            document.getElementById("lives").innerHTML = lives;
-            // reset number of guesses
-            guesses = 10;
-            document.getElementById('guesses').innerHTML = guesses;
-        }
+        livesOperation();
     }
     
     // Press and fade button when clicked on
@@ -182,41 +177,12 @@ var changedLetter;
                     document.getElementById('letter-' + i).innerHTML = this.innerHTML;
                 }
             }
-            // if guessed wrong then -1 from number of guesses
-            var j = (currentWord.indexOf(clickedLetter));
-            if (j === -1) {
-                guesses -= 1;
-                console.log(guesses);
-                document.getElementById('guesses').innerHTML = guesses;
-                // Move dino left base on guesses
-                moveDino();
-            }
-            // Guesses operation
-            if (guesses <= 0) {
-                // minus 1 in population
-                lives -= 1;
-                document.getElementById("lives").innerHTML = lives;
-                // reset number of guesses
-                guesses = 10;
-                document.getElementById('guesses').innerHTML = guesses;
-                // Reset hidden word
-                document.getElementById('hiddenWordUl').innerHTML = "";
-                // Reset buttons
-                resetButton();
-                // Recreate
-                generateRandomWord();
-                createList();
-                moveDino();
-            }
+            // if guessed wrong then -1 from number of guesses and move dino
+            guessedWrong(clickedLetter);
+            // Guess operation
+            guessesOperation();
             // lives operation
-            if (lives <= 0) {
-                alert('Game Over. Press OK or Cancel to restart.');
-                lives = 3;
-                document.getElementById("lives").innerHTML = lives;
-                // reset number of guesses
-                guesses = 10;
-                document.getElementById('guesses').innerHTML = guesses;
-            }
+            livesOperation();
         }
     }
     
