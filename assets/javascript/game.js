@@ -110,9 +110,9 @@ var changedLetter;
             lives -= 1;
             document.getElementById("lives").innerHTML = lives;
             if (lives === 2) {
-                alert('The T-Rex has caught up and eatten on of your people. You have 2 more people left.');
+                alert('The T-Rex has caught up and eatten one of your people. You have 2 more people left.');
             } else if (lives === 1) {
-                alert('The T-Rex has caught up and eatten on of your people. You have one more person left.');
+                alert('The T-Rex has caught up and eatten one of your people. You have one more person left.');
             };
             // reset number of guesses
             guesses = 10;
