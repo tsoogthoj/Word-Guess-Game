@@ -77,8 +77,6 @@ var changedLetter;
         }
     }
     createButton();
-    
-
 
 // Data
     // Population
@@ -87,6 +85,12 @@ var changedLetter;
     // Guesses
     guesses = 10;
     document.getElementById('guesses').innerHTML = guesses;
+
+
+
+
+
+
 // Game Function
     // Move dino base on guesses left
     function moveDino() {
@@ -95,10 +99,16 @@ var changedLetter;
         dinoId.style.left = 8 * (10 - guesses) + '%';
         console.log(dinoId.style.left);
     }
-    // Reset button
+    // Remove active class
     function resetButton() {
-        document.getElementById('alphabetUl').innerHTML = '';
+        for (var i = 0; i < 26; i++)
+        document.getElementById('alphabet-' + i).classList.remove('active');
     }
+    
+    
+    
+    
+    
     // Press key to guess
     document.onkeyup = function(event) {
         // add pressed key to variable
@@ -141,7 +151,6 @@ var changedLetter;
               // Reset buttons
               resetButton();
               // Recreate
-              createButton();
               generateRandomWord();
               createList();
               moveDino();
@@ -195,7 +204,6 @@ var changedLetter;
                 // Reset buttons
                 resetButton();
                 // Recreate
-                createButton();
                 generateRandomWord();
                 createList();
                 moveDino();
