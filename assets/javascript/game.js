@@ -68,7 +68,6 @@ var changedLetter;
         }
     }
     createButton();
-
 // Data
     // Population
     lives = 3;
@@ -76,6 +75,10 @@ var changedLetter;
     // Guesses
     guesses = 10;
     document.getElementById('guesses').innerHTML = guesses;
+
+
+
+
 // Game Functions
     // Move dino base on guesses left
     function moveDino() {
@@ -106,6 +109,11 @@ var changedLetter;
             // minus 1 in population
             lives -= 1;
             document.getElementById("lives").innerHTML = lives;
+            if (lives === 2) {
+                alert('The T-Rex has caught up and eatten on of your people. You have 2 more people left.');
+            } else if (lives === 1) {
+                alert('The T-Rex has caught up and eatten on of your people. You have one more person left.');
+            };
             // reset number of guesses
             guesses = 10;
             document.getElementById('guesses').innerHTML = guesses;
