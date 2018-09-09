@@ -14,7 +14,12 @@
 </head>
 <body>
     <h1>Welcome to Jurrasic Hangman</h1>
-    
+    <!-- Audio Contorls -->
+    <div id='audioControl'>
+        <h3 id='playThemeSongButton' type="button">Play Music</h3>
+        <h3 id='pauseThemeSongButton' type="button">Pause Music</h3>
+    </div>
+
     <!--  Hidden current word -->
     <div id='hiddenWord'></div>
 
@@ -33,8 +38,12 @@
     <div id='dinoChase'>
         <img id='dinoRun' src="assets/images/Dino Run.gif" alt="">
         <img id='manRun' src="assets/images/Man Run.gif" alt="">
+        <img id='censored' src='assets/images/censored.png' alt=''>
     </div>
 
+    <audio id='dinoEatMan'src="assets/audio/dinoEat.mp3" preload="auto"></audio>
+    <audio id='themeSong' src="assets/audio/themeSong.mp3" preload="auto" loop='true'></audio>
+    <audio id="win" src="assets/audio/win.mp3"></audio>
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>

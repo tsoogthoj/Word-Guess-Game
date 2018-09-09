@@ -10,6 +10,9 @@ var currentWord;
 var splitCurrentWord;
 var changedLetter;
 
+alert("You are about to play Jurrasic Hangman.");
+alert("Rules: Press any key to guess or use buttons to guess. Don't let the T-Rex eat your people.");
+
 // Randomly choose word and convert it each letter to '_'
     // Random Word
     function generateRandomWord() {
@@ -78,7 +81,6 @@ var changedLetter;
 
 
 
-
 // Game Functions
     // Move dino base on guesses left
     function moveDino() {
@@ -95,12 +97,14 @@ var changedLetter;
     // lives operation
     function livesOperation() {
         if (lives <= 0) {
-            alert('Game Over. Press OK or Cancel to restart.');
-            lives = 3;
-            document.getElementById("lives").innerHTML = lives;
-            // reset number of guesses
-            guesses = 10;
-            document.getElementById('guesses').innerHTML = guesses;
+            setTimeout(function() {
+                alert('Game Over. Press OK to restart.');
+                lives = 3;
+                document.getElementById("lives").innerHTML = lives;
+                // reset number of guesses
+                guesses = 10;
+                document.getElementById('guesses').innerHTML = guesses;
+            }, 3000);
         }
     }
     // Guesses operation
@@ -109,24 +113,61 @@ var changedLetter;
             // minus 1 in population
             lives -= 1;
             document.getElementById("lives").innerHTML = lives;
-            if (lives === 2) {
-                alert('The T-Rex has caught up and eatten one of your people. You have 2 more people left.');
-            } else if (lives === 1) {
-                alert('The T-Rex has caught up and eatten one of your people. You have one more person left.');
-            };
-            // reset number of guesses
-            guesses = 10;
-            document.getElementById('guesses').innerHTML = guesses;
-            // Reset hidden word
-            document.getElementById('hiddenWordUl').innerHTML = "";
-            // Reset buttons
-            resetButton();
-            // Recreate
-            generateRandomWord();
-            createList();
-            moveDino();
+            // hideDinoMan();
+            showCensored();
+            document.getElementById('dinoEatMan').play();
+            setTimeout(function() {
+                if (lives === 2) {
+                    alert('The T-Rex has caught up and eatten one of your people. You have 2 more people left.');
+                } else if (lives === 1) {
+                    alert('The T-Rex has caught up and eatten one more of your people. You have one more person left.');
+                };
+                // hide censored
+                hideCensored();
+                // showDinoMan();
+                // Reset guesses
+               guesses = 10;
+               document.getElementById('guesses').innerHTML = guesses;
+               // Reset hidden word
+               document.getElementById('hiddenWordUl').innerHTML = "";
+               // Reset buttons
+               resetButton();
+               // Recreate
+               generateRandomWord();
+               createList();
+               moveDino();
+            }, 3000);
+
         }    
     }
+    // Hide Censored Image
+    function hideCensored() {
+        document.getElementById('censored').style.display = 'none';
+    }
+    hideCensored();
+    // Display Censored Image
+    function showCensored() {
+        document.getElementById('censored').style.display = 'block';
+    }
+    // Hide dino and man
+    function hideDinoMan() {
+        document.getElementById('dinoRun').style.display = 'none';
+        document.getElementById('manRun').style.display = 'none';
+    }
+    // Show dino and man
+    function showDinoMan() {
+        document.getElementById('dinoRun').style.display = 'block';
+        document.getElementById('manRun').style.display = '';
+    }
+    // Play Jurrasic theme song
+    document.getElementById('playThemeSongButton').onclick = function() {
+        document.getElementById('themeSong').play();
+    }
+    // Pause Jurrasic theme song
+    document.getElementById('pauseThemeSongButton').onclick = function() {
+        document.getElementById('themeSong').pause();
+    }
+
     // if guessed wrong then -1 from number of guesses and move dino
     function guessedWrong(event) {
         var j = (currentWord.indexOf(event));
@@ -141,7 +182,30 @@ var changedLetter;
         }
         console.log(guesses);
     }
-    
+    // Guess if hidden word is guess correctly
+    function joinHiddenWord() {
+        var join = '';
+        for (var i = 0; i < currentWord.length; i++) {
+            join += document.getElementById('letter-' + i).innerHTML;
+            
+        }
+        console.log(join);
+        if (join === currentWord) {
+            document.getElementById('win').play();
+            alert("You guessed " + currentWord + " correctly and saved one of your people.");
+            // Reset guesses
+            guesses = 10;
+            document.getElementById('guesses').innerHTML = guesses;
+            // Reset hidden word
+            document.getElementById('hiddenWordUl').innerHTML = "";
+            // Reset buttons
+            resetButton();
+            // Recreate
+            generateRandomWord();
+            createList();
+            moveDino();
+        }
+    }
 
 
 
@@ -163,6 +227,8 @@ var changedLetter;
                 abcId = document.getElementById('alphabet-' + i).setAttribute("class", "active");
                 }   
         }
+        // Check to see if word is guessed correctly
+        joinHiddenWord();
         // if guessed wrong then -1 from number of guesses and move dino
         guessedWrong(keyGuess);
         // Guess operation
@@ -185,6 +251,8 @@ var changedLetter;
                     document.getElementById('letter-' + i).innerHTML = this.innerHTML;
                 }
             }
+            // Check to see if word is guessed correctly
+            joinHiddenWord();
             // if guessed wrong then -1 from number of guesses and move dino
             guessedWrong(clickedLetter);
             // Guess operation
@@ -193,17 +261,3 @@ var changedLetter;
             livesOperation();
         }
     }
-    
-
-  
-    
-    
-    
-
-
-
-
-    
-
-
-
