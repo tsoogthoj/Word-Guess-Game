@@ -10,6 +10,6 @@ Game Rules
 <br>
 Technology Used
 <br>
--	HTML
--	CSS
--	Javascript
+- HTML
+- CSS
+- Javascript
