@@ -9,6 +9,7 @@ Game Rules
 -	When your population reaches zero, you will lose.
 <br>
 Technology Used
+<br>
 -	HTML
 -	CSS
 -	Javascript
