@@ -8,7 +8,7 @@ Game Rules
 *	When your guesses reach zero you will lose one from your population. 
 *	When your population reaches zero, you will lose.
 <br>
-Technology Used
+Technology Used  
 * HTML
 * CSS
 * Javascript
