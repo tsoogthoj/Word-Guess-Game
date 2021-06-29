@@ -10,3 +10,6 @@ Technology Used
 -	HTML
 -	CSS
 -	Javascript
+
+Try it out!!!
+https://tsoogthoj.github.io/Word-Guess-Game/
