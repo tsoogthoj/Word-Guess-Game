@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <!-- Local -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
-
     <title>Jurrasic Hangman</title>
 </head>
 <body>
@@ -19,19 +16,15 @@
         <h3 id='playThemeSongButton' type="button">Play Music</h3>
         <h3 id='pauseThemeSongButton' type="button">Pause Music</h3>
     </div>
-
     <!--  Hidden current word -->
     <div id='hiddenWord'></div>
-
     <!-- The alphabet list -->
     <div id="alphabet"></div>
-
     <!-- Display how many lives, guesses player have left. -->
     <div id='data'>
         <div>Population: <p id="lives"></p></div>
         <div>Guesses: <p id="guesses"></p></div>
     </div>
-
     <!-- 
     This will correspond to the guesses. As the guesses depletes to zero the t-rex will get closer to the man 
     -->
@@ -40,7 +33,6 @@
         <img id='manRun' src="assets/images/Man Run.gif"  >
         <img id='censored' src='assets/images/censored.png' alt=''>
     </div>
-
     <audio id='dinoEatMan'src="assets/audio/dinoEat.mp3" preload="auto"></audio>
     <audio id='themeSong' src="assets/audio/themeSong.mp3" preload="auto" loop='true'></audio>
     <audio id="win" src="assets/audio/win.mp3"></audio>
