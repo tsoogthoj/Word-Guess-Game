@@ -1,5 +1,5 @@
 var wordBank =
-    ['tyrannosaurs', 'velociraptor', 'triceratops', 'brachiosaurus', 'stegosaurus', 'allosaurus', 'pachycephalosaurus', 'carnotaurus', 'mosasaurus', 'ankylosaurus', 'edmontosaurus', 'suchomimus', 'apatosaurus', 'pteranodon', 'parasaurolophus', 'microceratus', 'gallimmus'];
+    ['elephant', 'tiger', 'zebra', 'giraffe', 'monkey', 'lion', 'bear', 'kangaroo', 'panda', 'penguin', 'seal', 'walrus', 'dolphin', 'whale', 'shark', 'octopus', 'squid', 'jellyfish', 'crab', 'lobster', 'starfish', 'seahorse', 'turtle', 'stingray', 'manatee', 'narwhal', 'whale', 'lion', 'otter', 'platypus', 'koala'];
 
 var abc = 
     ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
