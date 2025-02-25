@@ -1,5 +1,4 @@
 var wordBank = [
-  "panda",
   "elephant",
   "tiger",
   "zebra",
